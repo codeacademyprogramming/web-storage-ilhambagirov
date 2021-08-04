@@ -7,7 +7,7 @@ function displayChosen(){
     html=''
     
     carsChosen.forEach(car=>{
-        html= `
+        card= `
     <div id="${car.id}" class="card" style="width: 18rem;">
         <span class="icon">
           <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
@@ -25,11 +25,13 @@ function displayChosen(){
         </div>
         </div>
         `
+
         let getrow =chechCars(counterClick)
         ++counterClick
+        console.log(counterClick)
         let creatediv=document.createElement('div')
         creatediv.className='col-3'
-        creatediv.innerHTML=html
+        creatediv.innerHTML=card
         getrow.append(creatediv)
         
         
@@ -40,11 +42,15 @@ function displayChosen(){
 
 displayChosen()
 
-function chechCars(counterClick){
-        if (counterClick>4) {
+function chechCars(counterClickFunc){
+
+        if (counterClickFunc>4) {
           counterClick=1
-        } 
-        if (counterClick===1) {
+          counterClickFunc=1
+        }
+        console.log('h' ,counterClickFunc)
+        if (counterClickFunc===1) {
+          console.log(counterClickFunc)
          let createrow =document.createElement('div')
           createrow.classList.add('row','customrow','mt-5')
           createrow.id=++id

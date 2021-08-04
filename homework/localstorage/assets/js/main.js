@@ -23,18 +23,22 @@ likedspans.forEach(likedspan => {
 // }
 
 function addItemToChosen(obj) {
-    let chosenCar = JSON.parse(localStorage.getItem('card'))
-    if(chosenCar==null){
-        cars.push(obj)
+    let chosencar=localStorage.getItem('card')
+    if (chosencar==null) {
+        cars.push(JSON.stringify(obj))
+    }else{
+        cars.forEach(chosen =>{
+            if (chosen.id!==obj.id) {
+                console.log(chosen.id)
+                console.log(obj.id)
+                  cars.push(JSON.stringify(obj))
+            }
+            }) 
     }
-    else{
-    
-        if (chosenCar.some(chosen =>chosen.id===obj.id)) {
-         return
-        }else{
-            cars.push(obj)
-        }
-    }
-    localStorage.setItem('card', JSON.stringify(cars))
+        
+           
+        
+    localStorage.setItem('card', cars.toString())
+    console.log(cars)
 
 }
